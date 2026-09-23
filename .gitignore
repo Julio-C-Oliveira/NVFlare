@@ -2,12 +2,15 @@
 __pycache__/
 *.py[cod]
 venv/
+.venv/
 .env
 
 # Dados e Checkpoints locais
 data/
 *.pt
 *.pth
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
 
 # Diretórios de trabalho do NVFlare
 /tmp/nvflare/
@@ -18,3 +21,5 @@ tb_events/
 # Outros
 workflows
 templates
+.specify
+specs
