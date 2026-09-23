@@ -14,3 +14,7 @@ data/
 workspace/
 run_*/
 tb_events/
+
+# Outros
+workflows
+templates
