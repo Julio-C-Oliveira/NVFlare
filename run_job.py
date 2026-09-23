@@ -36,7 +36,10 @@ def main():
         print("Erro: --max_batches deve ser >= 1", file=sys.stderr)
         sys.exit(1)
 
-    data_dir = os.path.abspath("./data")
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(project_root, "data")
+    train_script_path = os.path.join(project_root, "src", "client.py")
+
     print("Verificando integridade dos dados...")
     try:
         datasets.CIFAR10(root=data_dir, train=True, download=True)
@@ -56,7 +59,7 @@ def main():
         model=SimpleCNN(),
         min_clients=args.clients,
         num_rounds=args.rounds,
-        train_script="src/client.py",
+        train_script=train_script_path,
         train_args=train_args,
         key_metric="accuracy",
         key_metric_mode="max",
@@ -82,8 +85,9 @@ def main():
         model_weights = ckpt["model"] if isinstance(ckpt, dict) and "model" in ckpt else ckpt
         global_model = SimpleCNN()
         global_model.load_state_dict(model_weights)
-        torch.save(global_model.state_dict(), "./global_model.pt")
-        print("Modelo global salvo em: ./global_model.pt")
+        save_path = os.path.join(project_root, "global_model.pt")
+        torch.save(global_model.state_dict(), save_path)
+        print(f"Modelo global salvo em: {save_path}")
     else:
         print(f"Aviso: Checkpoint do modelo não foi encontrado em {ckpt_path}", file=sys.stderr)
 

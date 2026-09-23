@@ -8,12 +8,16 @@ Este repositório contém um **Pipeline Didático de Aprendizado Federado (Feder
 
 Para extrair o máximo valor didático desta atividade, siga a ordem abaixo:
 
-1. **Passo 1: Notebook Interativo** (`notebooks/01_fundamentos_nvflare_pytorch.ipynb`)
+1. **Passo 1: Fundamentos & Arquitetura** (`notebooks/01_fundamentos_nvflare_pytorch.ipynb`)
    - Abra o notebook no Jupyter local ou no Google Colab.
    - Explore a arquitetura do NVFlare (**Bloco A**), a compatibilidade com múltiplos frameworks (**Bloco B**) e a anatomia das camadas PyTorch, funções de ativação e otimizadores (**Bloco C**).
 
-2. **Passo 2: Pipeline via Linha de Comando (CLI)** (`run_job.py`)
-   - Execute o orquestrador federado e observe a agregação em tempo real dos clientes locais.
+2. **Passo 2: Execução & Simulação Interativa** (`notebooks/02_execucao_simulacao_nvflare.ipynb`)
+   - Execução interativa da **Job Recipe API (`FedAvgRecipe`)** e do simulador **NVFlare (`SimEnv`)**.
+   - Análise gráfica da heterogeneidade estatística via amostragem de Dirichlet ($Dir(\alpha)$) e comparação entre **FedAvg** e **FedProx**.
+
+3. **Passo 3: Pipeline via Linha de Comando (CLI)** (`run_job.py`)
+   - Execute o orquestrador federado via CLI e observe a agregação em tempo real dos clientes locais.
    - Abra o **TensorBoard** para acompanhar a evolução das curvas de perda e acurácia.
 
 ---
@@ -110,7 +114,8 @@ O notebook interativo está preparado para rodar em instâncias gratuitas de CPU
 ```
 .
 ├── notebooks/
-│   └── 01_fundamentos_nvflare_pytorch.ipynb  # Notebook didático interativo (Blocos A, B, C)
+│   ├── 01_fundamentos_nvflare_pytorch.ipynb   # Notebook de Fundamentos (Blocos A, B, C)
+│   └── 02_execucao_simulacao_nvflare.ipynb   # Notebook de Execução & Simulação NVFlare
 ├── src/
 │   ├── model.py                               # Arquitetura SimpleCNN (sem BatchNorm)
 │   └── client.py                              # Script do cliente NVFlare (Treino local & FedProx)
