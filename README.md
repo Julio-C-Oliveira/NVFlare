@@ -1,12 +1,5 @@
-# Pipeline Didático de Aprendizado Federado com PyTorch e NVFlare
 
-Este repositório contém um **Pipeline Didático de Aprendizado Federado (Federated Learning - FL)** projetado para sessões práticas e laboratórios (duração estimada: 40 a 50 minutos). Utilizando **PyTorch** e o **NVIDIA NVFlare 2.5+**, os alunos aprendem os conceitos fundamentais de simulação federada, agregação via **FedAvg** e **FedProx**, e o impacto da heterogeneidade de dados (distribuição Não-IID via amostragem de Dirichlet).
-
----
-
-## 🎯 Ordem Pedagógica Recomendada
-
-Para extrair o máximo valor didático desta atividade, siga a ordem abaixo:
+## Ordem Recomendada
 
 1. **Passo 1: Fundamentos & Arquitetura** (`notebooks/01_fundamentos_nvflare_pytorch.ipynb`)
    - Abra o notebook no Jupyter local ou no Google Colab.
@@ -22,7 +15,7 @@ Para extrair o máximo valor didático desta atividade, siga a ordem abaixo:
 
 ---
 
-## 🛠️ Pré-requisitos e Instalação
+## Pré-requisitos e Instalação
 
 - **Python 3.10+**
 - **Virtualenv** `.venv`
@@ -41,7 +34,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Cenários de Execução Rápida (Prontos para Uso)
+## Cenários
 
 ### Cenário 1: Aprendizado Federado IID Padrão (MVP)
 Executa 4 rodadas de agregação federada com 2 clientes e distribuição de dados IID ($\alpha = 100.0$).
@@ -69,7 +62,7 @@ python run_job.py --clients 3 --rounds 6 --alpha 0.5 --mu 0.01 --max_batches 20
 
 ---
 
-## 📊 Visualização de Métricas com TensorBoard
+## Visualização de Métricas com TensorBoard
 
 Após disparar qualquer simulação federada, execute o seguinte comando no terminal para iniciar o servidor do TensorBoard:
 
@@ -81,7 +74,7 @@ Acesse [http://localhost:6006](http://localhost:6006) em seu navegador para visu
 
 ---
 
-## 💾 Inspeção e Recarregamento do Modelo Global
+## Inspeção e Recarregamento do Modelo Global
 
 Ao término da simulação, o checkpoint do modelo global otimizado é salvo automaticamente em `./global_model.pt`. Para inspecionar os parâmetros do modelo via Python:
 
@@ -100,7 +93,7 @@ for key, tensor in model.state_dict().items():
 
 ---
 
-## 📓 Execução no Google Colab
+## Execução no Google Colab
 
 O notebook interativo está preparado para rodar em instâncias gratuitas de CPU do Google Colab:
 - Acesse `notebooks/01_fundamentos_nvflare_pytorch.ipynb`.
@@ -109,18 +102,18 @@ O notebook interativo está preparado para rodar em instâncias gratuitas de CPU
 
 ---
 
-## 📁 Estrutura do Repositório
+## Estrutura do Repositório
 
 ```
 .
 ├── notebooks/
-│   ├── 01_fundamentos_nvflare_pytorch.ipynb   # Notebook de Fundamentos (Blocos A, B, C)
-│   └── 02_execucao_simulacao_nvflare.ipynb   # Notebook de Execução & Simulação NVFlare
+│   ├── 01_fundamentos_nvflare_pytorch.ipynb   
+│   └── 02_execucao_simulacao_nvflare.ipynb   
 ├── src/
-│   ├── model.py                               # Arquitetura SimpleCNN (sem BatchNorm)
-│   └── client.py                              # Script do cliente NVFlare (Treino local & FedProx)
-├── run_job.py                                 # Orquestrador CLI da simulação federada
-├── requirements.txt                           # Dependências do projeto
-├── .gitignore                                 # Regras de exclusão do Git
-└── README.md                                  # Documentação principal
+│   ├── model.py                               
+│   └── client.py                             
+├── run_job.py                                 
+├── requirements.txt                           
+├── .gitignore                                 
+└── README.md                                  
 ```
