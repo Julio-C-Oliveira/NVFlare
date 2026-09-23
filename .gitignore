@@ -1,0 +1,16 @@
+# Python & Ambientes
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Dados e Checkpoints locais
+data/
+*.pt
+*.pth
+
+# Diretórios de trabalho do NVFlare
+/tmp/nvflare/
+workspace/
+run_*/
+tb_events/
